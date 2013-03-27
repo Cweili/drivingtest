@@ -1,0 +1,81 @@
+body {
+    font-family:"Microsoft Yahei", tahoma, arial, sans-serif;
+    font-size:14px;
+}
+a {
+    color:#15428B;
+}
+a:link, a:visited {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+#header {
+    background: #15428B;
+}
+#header h1 {
+    font-size: 28px;
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+#tab-intro strong {
+	font-size: 28px;
+	font-weight: bold;
+}
+#tab-intro {
+	width: 100%;
+	color: #555;
+	font-size: 18px;
+}
+#tab-intro i {
+	font-size: 18px;
+	font-weight: normal;
+	display: inline-block;
+	float: right;
+}
+#tab-intro h2 {
+	font-size: 32px;
+	color: #cb5353;
+	
+}
+#tab-intro b {
+	font-size: 22px;
+}
+#question-content {
+	font-size: 26px;
+	font-weight: bold;
+	padding: 10px 0 0 20px;
+}
+#question-detail {
+	line-height: 40px;
+	padding: 0 0 0 10px;
+}
+.question-image img {
+	height: 320px;
+}
+.x-body {
+	font:normal 14px "Microsoft Yahei", tahoma, arial, sans-serif;
+}
+.x-border-layout-ct {
+	background-color: #fff;
+}
+.x-form-display-field {
+	font:normal 18px "Microsoft Yahei", tahoma, arial, sans-serif;
+}
+.x-box-item {
+	font-size: 16px;
+}
+.x-toolbar-vertical {
+	padding: 2px 7px 0 7px;
+}
+.x-btn-default-toolbar-small-icon button, .x-btn-default-toolbar-small-icon a, .x-btn-default-toolbar-small-icon .x-btn-inner, .x-btn-default-toolbar-small-noicon button, .x-btn-default-toolbar-small-noicon a, .x-btn-default-toolbar-small-noicon .x-btn-inner {
+	height: 60px;
+	line-height: 60px;
+}
+.x-btn-default-toolbar-small, .x-btn-inner {
+    font-size: 18px !important;
+    font-weight: bold !important;
+    font-family:"Microsoft Yahei", tahoma, arial, sans-serif !important;
+}
