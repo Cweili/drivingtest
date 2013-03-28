@@ -6,6 +6,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * 问题
+ * 
+ * @author Cweili
+ * @version 2013-3-28 下午12:14:39
+ * 
+ */
 @Document(collection = "question")
 public class Question {
 

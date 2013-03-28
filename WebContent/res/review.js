@@ -10,6 +10,7 @@ Ext.onReady(function() {
 	var viewport = null;
 	var buttonPrev = null;
 	var buttonNext = null;
+	var buttonDelete = null;
 	var textRate = null;
 	var checkboxAutoNext = null;
 	var questionToolbarRight = null;
@@ -22,14 +23,14 @@ Ext.onReady(function() {
 	var buttonWidth = 150;
 	var buttonHeight = 50;
 	
-	questionService.getQuestionIdList(window.location.hash, function(data){
+	record.getWrongQuestion(function(data){
 		ids = Ext.decode(data);
 		maxRate = ids.length;
 		if (maxRate > 0) {
 			initComponent();
 			update();
 		} else {
-			messageBox('暂时没有题目哦', '暂时没有题目哦，请等待管理员添加吧！');
+			messageBox('暂时没有错题哦', '暂时没有错题哦，请去练习一下吧！');
 		}
 	});
 	
@@ -56,6 +57,21 @@ Ext.onReady(function() {
 				update();
 			},
 			html: '下一题'
+		};
+		
+		buttonDelete = {
+			xtype: 'button',
+			margins: '0 5 0 5',
+			width: buttonWidth,
+			height: buttonHeight,
+			handler: function() {
+				record.removeWrongQuestion(question.id, function(data) {
+					ids = Ext.decode(data);
+					maxRate = ids.length;
+					update();
+				});
+			},
+			html: '从错题本中删除'
 		};
 		
 		textRate = new Ext.form.field.Number({
@@ -130,7 +146,7 @@ Ext.onReady(function() {
 				type: 'hbox',
 				align: 'center'
 			},
-			items: [ buttonPrev, buttonNext, questionToolbarRight, textRate ]
+			items: [ buttonDelete, buttonPrev, buttonNext, questionToolbarRight, textRate ]
 		};
 		
 		questionImage = {
@@ -168,7 +184,6 @@ Ext.onReady(function() {
 			}
 		} else {
 			messageBox('抱歉回答错误', '正确答案是：<strong>' + question.option[question.answer] + '</strong>', 'question-image');
-			record.addWrongQuestion(question.id);
 		}
 	};
 	

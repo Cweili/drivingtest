@@ -4,6 +4,8 @@
 package org.cweili.drivingtest.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.cweili.drivingtest.domain.Question;
@@ -27,10 +29,12 @@ public class QuestionService {
 	@Autowired
 	QuestionRepository questionRepository;
 
-	public String test(String test) {
-		return "hello" + test;
-	}
-
+	/**
+	 * 获取问题
+	 * 
+	 * @param id
+	 * @return
+	 */
 	public String getQuestion(String id) {
 		Question question = questionRepository.findOne(id);
 		if (null == question) {
@@ -39,14 +43,27 @@ public class QuestionService {
 		return JSON.toJSONString(question);
 	}
 
+	/**
+	 * 获取问题id列表
+	 * 
+	 * @param order
+	 * @return
+	 */
 	public String getQuestionIdList(String order) {
-		List<String> idList = new ArrayList<String>();
+		List<String> idList;
+		if (null != order && "#random".equals(order)) {
+			idList = getIdList(new LinkedList<String>());
+			Collections.shuffle(idList);
+		} else {
+			idList = getIdList(new ArrayList<String>());
+		}
+		return JSON.toJSONString(idList);
+	}
+
+	private List<String> getIdList(List<String> idList) {
 		for (Question question : questionRepository.findAll()) {
 			idList.add(question.getId());
 		}
-		if (null != order && "#random".equals(order)) {
-			java.util.Collections.shuffle(idList);
-		}
-		return JSON.toJSONString(idList);
+		return idList;
 	}
 }

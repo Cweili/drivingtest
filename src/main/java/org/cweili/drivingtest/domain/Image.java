@@ -4,6 +4,7 @@
 package org.cweili.drivingtest.domain;
 
 /**
+ * 图片
  * 
  * @author Cweili
  * @version 2013-3-26 下午8:06:34

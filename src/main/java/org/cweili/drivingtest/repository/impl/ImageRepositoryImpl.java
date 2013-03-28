@@ -49,54 +49,109 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 		return image;
 	}
 
+	/*
+	 * （non-Javadoc）
+	 * 
+	 * @see org.springframework.data.repository.CrudRepository#count()
+	 */
 	@Override
 	public long count() {
 		// TODO 自动生成的方法存根
 		return 0;
 	}
 
+	/*
+	 * （non-Javadoc）
+	 * 
+	 * @see org.springframework.data.repository.CrudRepository#delete(java.io.
+	 * Serializable)
+	 */
 	@Override
 	public void delete(String arg0) {
 		// TODO 自动生成的方法存根
 
 	}
 
+	/*
+	 * （non-Javadoc）
+	 * 
+	 * @see
+	 * org.springframework.data.repository.CrudRepository#delete(java.lang.Object
+	 * )
+	 */
 	@Override
 	public void delete(Image arg0) {
 		// TODO 自动生成的方法存根
 
 	}
 
+	/*
+	 * （non-Javadoc）
+	 * 
+	 * @see
+	 * org.springframework.data.repository.CrudRepository#delete(java.lang.Iterable
+	 * )
+	 */
 	@Override
 	public void delete(Iterable<? extends Image> arg0) {
 		// TODO 自动生成的方法存根
 
 	}
 
+	/*
+	 * （non-Javadoc）
+	 * 
+	 * @see org.springframework.data.repository.CrudRepository#deleteAll()
+	 */
 	@Override
 	public void deleteAll() {
 		// TODO 自动生成的方法存根
 
 	}
 
+	/*
+	 * （non-Javadoc）
+	 * 
+	 * @see org.springframework.data.repository.CrudRepository#exists(java.io.
+	 * Serializable)
+	 */
 	@Override
 	public boolean exists(String arg0) {
 		// TODO 自动生成的方法存根
 		return false;
 	}
 
+	/*
+	 * （non-Javadoc）
+	 * 
+	 * @see org.springframework.data.repository.CrudRepository#findAll()
+	 */
 	@Override
 	public Iterable<Image> findAll() {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
+	/*
+	 * （non-Javadoc）
+	 * 
+	 * @see
+	 * org.springframework.data.repository.CrudRepository#findAll(java.lang.
+	 * Iterable)
+	 */
 	@Override
 	public Iterable<Image> findAll(Iterable<String> arg0) {
 		// TODO 自动生成的方法存根
 		return null;
 	}
 
+	/*
+	 * （non-Javadoc）
+	 * 
+	 * @see
+	 * org.cweili.drivingtest.repository.ImageRespository#findOne(java.lang.
+	 * String)
+	 */
 	@Override
 	public Image findOne(String name) {
 		setGfs();
@@ -116,6 +171,13 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 		return image;
 	}
 
+	/*
+	 * （non-Javadoc）
+	 * 
+	 * @see
+	 * org.springframework.data.repository.CrudRepository#save(java.lang.Iterable
+	 * )
+	 */
 	@Override
 	public <S extends Image> Iterable<S> save(Iterable<S> arg0) {
 		// TODO 自动生成的方法存根

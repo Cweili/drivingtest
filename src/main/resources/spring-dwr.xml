@@ -16,6 +16,9 @@
 		<dwr:create javascript="imageService" type="spring">
 			<dwr:param name="beanName" value="imageService"/>
 		</dwr:create>
+		<dwr:create javascript="recordService" type="spring">
+			<dwr:param name="beanName" value="recordService"/>
+		</dwr:create>
 		<dwr:create javascript="importData" type="spring">
 			<dwr:param name="beanName" value="importData"/>
 		</dwr:create>
