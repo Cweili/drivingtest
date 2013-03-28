@@ -44,7 +44,7 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 		GridFSInputFile file;
 		file = gfs.createFile(image.getData());
 		file.setFilename(image.getName());
-		file.setContentType("image/png");
+		file.setContentType("image/jpeg");
 		file.save();
 		return image;
 	}
@@ -106,7 +106,6 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 		}
 		Image image = new Image();
 		image.setName(name);
-		image.setLength((int) file.getLength());
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		try {
 			file.writeTo(os);

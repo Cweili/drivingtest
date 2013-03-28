@@ -11,8 +11,8 @@ public class Question {
 
 	@Id
 	private String id;
+	private byte type;
 	private String content;
-	private String image;
 	private List<String> option;
 	private byte answer;
 	private String category;
@@ -23,12 +23,12 @@ public class Question {
 	}
 
 	@PersistenceConstructor
-	public Question(String id, String content, String image, List<String> option, byte answer,
+	public Question(String id, byte type, String content, List<String> option, byte answer,
 			String category, String frequency) {
 		super();
 		this.id = id;
+		this.type = type;
 		this.content = content;
-		this.image = image;
 		this.option = option;
 		this.answer = answer;
 		this.category = category;
@@ -43,20 +43,20 @@ public class Question {
 		this.id = id;
 	}
 
+	public byte getType() {
+		return type;
+	}
+
+	public void setType(byte type) {
+		this.type = type;
+	}
+
 	public String getContent() {
 		return content;
 	}
 
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	public String getImage() {
-		return image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
 	}
 
 	public List<String> getOption() {

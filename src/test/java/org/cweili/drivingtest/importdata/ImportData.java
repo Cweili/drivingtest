@@ -40,23 +40,28 @@ public class ImportData {
 					+ "questiondb.csv"));
 			String line;
 			String[] params;
+			String id;
 			Question question;
+			byte type;
 			byte answer;
 			List<String> option = new ArrayList<String>();
 			while ((line = bw.readLine()) != null) {
 				option.clear();
 				params = line.replace("\"", "").split(",");
+				id = new ObjectId().toString();
 				if ("noimg".equals(params[3])) {
 					params[3] = "";
 				} else {
 					File file = new File(this.getClass().getResource("/").toString().substring(6)
 							+ "image/" + params[3] + ".jpg");
 					byte[] data = new byte[(int) file.length()];
-					new FileInputStream(new File(this.getClass().getResource("/").toString()
-							.substring(6)
-							+ "image/" + params[3] + ".jpg")).read(data);
+					FileInputStream fis = new FileInputStream(new File(this.getClass()
+							.getResource("/").toString().substring(6)
+							+ "image/" + params[3] + ".jpg"));
+					fis.read(data);
+					fis.close();
 
-					imageRespository.save(new Image(params[3], (int) file.length(), data));
+					imageRespository.save(new Image(id, data));
 				}
 				option.add(params[4]);
 				option.add(params[5]);
@@ -66,9 +71,9 @@ public class ImportData {
 				if (!"null".equals(params[7])) {
 					option.add(params[7]);
 				}
+				type = Byte.parseByte(params[1]);
 				answer = Byte.parseByte(params[8]);
-				question = new Question(new ObjectId().toString(), params[2], params[3], option,
-						answer, params[9], params[10]);
+				question = new Question(id, type, params[2], option, answer, params[9], params[10]);
 				questionRepository.save(question);
 			}
 			bw.close();

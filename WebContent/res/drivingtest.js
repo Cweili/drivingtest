@@ -14,18 +14,6 @@ Ext.onReady(function() {
 		maxSize: 202,
 		rbar: [
 			{
-	            text: '注册',
-	            textAlign: 'center',
-	            handler: function(){Ext.Msg.alert('help','please help me!');}
-	        },
-	        {
-	            text: '登录',
-	            textAlign: 'center',
-	            handler: function(){
-	            	addTab('1', 'hello', 'http://baidu.com', true);
-	            }
-	        },
-	        {
 	            text: '顺序练习',
 	            textAlign: 'center',
 	            handler: function() {
@@ -69,7 +57,7 @@ Ext.onReady(function() {
 		renderTo: Ext.getBody()
 	});
 	
-	function addTab(id, title, link, closable) {
+	var addTab = function(id, title, link, closable) {
 		id = 'tab-' + id;
 		var tab = tabPanel.getComponent(id);
 		if(null == tab) {
@@ -90,5 +78,5 @@ Ext.onReady(function() {
 	    	width: Ext.get(id + '-body').getWidth(),
 	    	height: Ext.get(id + '-body').getHeight()
 	    });
-	}
+	};
 });

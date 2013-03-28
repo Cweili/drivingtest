@@ -34,17 +34,17 @@ public class QuestionService {
 	public String getQuestion(String id) {
 		Question question = questionRepository.findOne(id);
 		if (null == question) {
-			question = new Question("", "", "", null, (byte) 0, "", "");
+			question = new Question("", (byte) 0, "", null, (byte) 0, "", "");
 		}
 		return JSON.toJSONString(question);
 	}
 
-	public String getQuestionIdList(String method) {
+	public String getQuestionIdList(String order) {
 		List<String> idList = new ArrayList<String>();
 		for (Question question : questionRepository.findAll()) {
 			idList.add(question.getId());
 		}
-		if (null != method && "#random".equals(method)) {
+		if (null != order && "#random".equals(order)) {
 			java.util.Collections.shuffle(idList);
 		}
 		return JSON.toJSONString(idList);

@@ -64,6 +64,10 @@ a:hover {
 .x-form-display-field {
 	font:normal 18px "Microsoft Yahei", tahoma, arial, sans-serif;
 }
+.x-form-display-field strong {
+	color: #ff0000;
+	font-weight: bold;
+}
 .x-box-item {
 	font-size: 16px;
 }

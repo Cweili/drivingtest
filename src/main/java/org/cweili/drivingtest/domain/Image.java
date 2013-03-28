@@ -12,17 +12,15 @@ package org.cweili.drivingtest.domain;
 public class Image {
 
 	String name;
-	int length;
 	byte[] data;
 
 	public Image() {
 		super();
 	}
 
-	public Image(String name, int length, byte[] data) {
+	public Image(String name, byte[] data) {
 		super();
 		this.name = name;
-		this.length = length;
 		this.data = data;
 	}
 
@@ -32,14 +30,6 @@ public class Image {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public int getLength() {
-		return length;
-	}
-
-	public void setLength(int length) {
-		this.length = length;
 	}
 
 	public byte[] getData() {
