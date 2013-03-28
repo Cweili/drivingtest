@@ -25,20 +25,20 @@ public class Image {
 		this.data = data;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public byte[] getData() {
 		return data;
 	}
 
+	public String getName() {
+		return name;
+	}
+
 	public void setData(byte[] data) {
 		this.data = data;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

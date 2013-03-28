@@ -50,7 +50,11 @@ a:hover {
 }
 #question-detail {
 	line-height: 40px;
-	padding: 0 0 0 10px;
+	padding: 5px 5px 0 5px;
+}
+#question-detail h4 {
+	font-size: 22px;
+	color: #cb5353;
 }
 .question-image img {
 	height: 320px;

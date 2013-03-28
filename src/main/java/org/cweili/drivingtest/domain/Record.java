@@ -35,12 +35,12 @@ public class Record {
 		return user;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
-	}
-
 	public Set<String> getWrongQuestion() {
 		return wrongQuestion;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
 	}
 
 	public void setWrongQuestion(Set<String> wrongQuestion) {

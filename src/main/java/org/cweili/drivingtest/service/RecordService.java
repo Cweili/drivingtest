@@ -27,16 +27,6 @@ public class RecordService {
 	RecordRepository recordRepository;
 
 	/**
-	 * 获取错题列表
-	 * 
-	 * @param user
-	 * @return
-	 */
-	public String getWrongQuestion(String user) {
-		return JSON.toJSONString(getRecord(user).getWrongQuestion());
-	}
-
-	/**
 	 * 添加错题
 	 * 
 	 * @param user
@@ -46,6 +36,16 @@ public class RecordService {
 		Record record = getRecord(user);
 		record.getWrongQuestion().add(id);
 		recordRepository.save(record);
+	}
+
+	/**
+	 * 获取错题列表
+	 * 
+	 * @param user
+	 * @return
+	 */
+	public String getWrongQuestion(String user) {
+		return JSON.toJSONString(getRecord(user).getWrongQuestion());
 	}
 
 	/**

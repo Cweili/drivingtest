@@ -35,41 +35,12 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 	/*
 	 * （non-Javadoc）
 	 * 
-	 * @see
-	 * org.springframework.data.repository.CrudRepository#save(java.lang.Object)
-	 */
-	@Override
-	public <S extends Image> S save(S image) {
-		setGfs();
-		GridFSInputFile file;
-		file = gfs.createFile(image.getData());
-		file.setFilename(image.getName());
-		file.setContentType("image/jpeg");
-		file.save();
-		return image;
-	}
-
-	/*
-	 * （non-Javadoc）
-	 * 
 	 * @see org.springframework.data.repository.CrudRepository#count()
 	 */
 	@Override
 	public long count() {
 		// TODO 自动生成的方法存根
 		return 0;
-	}
-
-	/*
-	 * （non-Javadoc）
-	 * 
-	 * @see org.springframework.data.repository.CrudRepository#delete(java.io.
-	 * Serializable)
-	 */
-	@Override
-	public void delete(String arg0) {
-		// TODO 自动生成的方法存根
-
 	}
 
 	/*
@@ -94,6 +65,18 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 	 */
 	@Override
 	public void delete(Iterable<? extends Image> arg0) {
+		// TODO 自动生成的方法存根
+
+	}
+
+	/*
+	 * （non-Javadoc）
+	 * 
+	 * @see org.springframework.data.repository.CrudRepository#delete(java.io.
+	 * Serializable)
+	 */
+	@Override
+	public void delete(String arg0) {
 		// TODO 自动生成的方法存根
 
 	}
@@ -182,6 +165,23 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 	public <S extends Image> Iterable<S> save(Iterable<S> arg0) {
 		// TODO 自动生成的方法存根
 		return null;
+	}
+
+	/*
+	 * （non-Javadoc）
+	 * 
+	 * @see
+	 * org.springframework.data.repository.CrudRepository#save(java.lang.Object)
+	 */
+	@Override
+	public <S extends Image> S save(S image) {
+		setGfs();
+		GridFSInputFile file;
+		file = gfs.createFile(image.getData());
+		file.setFilename(image.getName());
+		file.setContentType("image/jpeg");
+		file.save();
+		return image;
 	}
 
 	private void setGfs() {

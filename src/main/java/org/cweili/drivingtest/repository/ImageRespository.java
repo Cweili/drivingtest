@@ -11,14 +11,14 @@ import org.cweili.drivingtest.domain.Image;
 public interface ImageRespository {
 
 	/**
-	 * @param image
-	 * @return
-	 */
-	public <S extends Image> S save(S image);
-
-	/**
 	 * @param name
 	 * @return
 	 */
 	public Image findOne(String name);
+
+	/**
+	 * @param image
+	 * @return
+	 */
+	public <S extends Image> S save(S image);
 }

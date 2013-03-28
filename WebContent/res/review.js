@@ -132,8 +132,8 @@ Ext.onReady(function() {
 			id: 'question-option',
 			region: 'west',
 			border: false,
-			margin: '5 0 20 0',
-			width: 420
+			margin: '5 0 0 0',
+			width: 400
 		};
 		
 		questionToolbar = {
@@ -141,7 +141,8 @@ Ext.onReady(function() {
 			id: 'question-toolbar',
 			region: 'south',
 			border: false,
-			height: 120,
+			margin: '2 0 0 6',
+			height: 64,
 			layout: {
 				type: 'hbox',
 				align: 'center'
@@ -153,8 +154,7 @@ Ext.onReady(function() {
 			xtype: 'panel',
 			id: 'question-image',
 			region: 'center',
-			border: false,
-			height: 250
+			border: false
 		};
 		
 		questionDetail = {
@@ -162,7 +162,7 @@ Ext.onReady(function() {
 			id: 'question-detail',
 			region: 'east',
 			border: false,
-			width: 250,
+			width: 120,
 		};
 		
 		viewport = Ext.create('Ext.Viewport', {
@@ -202,8 +202,8 @@ Ext.onReady(function() {
 			}
 			Ext.get('question-content').setHTML(question.content);
 			Ext.get('question-detail').setHTML(
-				'题目分类：<br /><strong>' + question.category
-				+ '</strong><br />出题概率：' + question.frequency
+					'<h4>题目分类</h4>' + question.category
+					+ '<h4>出题概率</h4>' + question.frequency
 			);
 			textRate.setValue(rate);
 			updateOption();
@@ -220,7 +220,7 @@ Ext.onReady(function() {
 				xtype: 'button',
 				id: 'answer-' + i,
 				margins: '5 0 0 0',
-				width: 400,
+				width: 390,
 				height: buttonHeight,
 				html: question.option[i],
 				handler: function() {

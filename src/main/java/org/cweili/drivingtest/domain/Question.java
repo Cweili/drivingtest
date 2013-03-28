@@ -42,60 +42,60 @@ public class Question {
 		this.frequency = frequency;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public byte getType() {
-		return type;
-	}
-
-	public void setType(byte type) {
-		this.type = type;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public List<String> getOption() {
-		return option;
-	}
-
-	public void setOption(List<String> option) {
-		this.option = option;
-	}
-
 	public byte getAnswer() {
 		return answer;
-	}
-
-	public void setAnswer(byte answer) {
-		this.answer = answer;
 	}
 
 	public String getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public String getContent() {
+		return content;
 	}
 
 	public String getFrequency() {
 		return frequency;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public List<String> getOption() {
+		return option;
+	}
+
+	public byte getType() {
+		return type;
+	}
+
+	public void setAnswer(byte answer) {
+		this.answer = answer;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 	public void setFrequency(String frequency) {
 		this.frequency = frequency;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public void setOption(List<String> option) {
+		this.option = option;
+	}
+
+	public void setType(byte type) {
+		this.type = type;
 	}
 
 }
