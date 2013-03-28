@@ -8,7 +8,10 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.commons.codec.binary.Base64;
+import org.cweili.drivingtest.domain.Image;
 import org.cweili.drivingtest.domain.Question;
+import org.cweili.drivingtest.repository.ImageRespository;
 import org.cweili.drivingtest.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -28,6 +31,23 @@ public class QuestionService {
 
 	@Autowired
 	QuestionRepository questionRepository;
+
+	@Autowired
+	ImageRespository imageRespository;
+
+	/**
+	 * 获取图片
+	 * 
+	 * @param name
+	 * @return
+	 */
+	public String getImage(String name) {
+		Image image = imageRespository.findOne(name);
+		if (null != image) {
+			return Base64.encodeBase64String(image.getData());
+		}
+		return "";
+	}
 
 	/**
 	 * 获取问题

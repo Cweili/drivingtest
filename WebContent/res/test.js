@@ -232,7 +232,7 @@ Ext.onReady(function() {
 			height: 0
 		});
 		if (2 == question.type || 3== question.type) {
-			imageService.getImage(question.id, function(data){
+			questionService.getImage(question.id, function(data){
 				Ext.get('question-image-img').set({
 					height: 320,
 					src: 'data:image/jpeg;base64,' + data
