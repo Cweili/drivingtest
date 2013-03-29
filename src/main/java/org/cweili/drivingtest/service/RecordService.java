@@ -7,11 +7,10 @@ import java.util.HashSet;
 
 import org.cweili.drivingtest.domain.Record;
 import org.cweili.drivingtest.repository.RecordRepository;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
-
-import com.alibaba.fastjson.JSON;
 
 /**
  * 
@@ -45,7 +44,7 @@ public class RecordService {
 	 * @return
 	 */
 	public String getWrongQuestion(String user) {
-		return JSON.toJSONString(getRecord(user).getWrongQuestion());
+		return JSONObject.valueToString(getRecord(user).getWrongQuestion());
 	}
 
 	/**
@@ -59,7 +58,7 @@ public class RecordService {
 		Record record = getRecord(user);
 		record.getWrongQuestion().remove(id);
 		recordRepository.save(record);
-		return JSON.toJSONString(record.getWrongQuestion());
+		return JSONObject.valueToString(record.getWrongQuestion());
 	}
 
 	private Record getRecord(String user) {

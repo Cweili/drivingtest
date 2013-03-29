@@ -13,11 +13,10 @@ import org.cweili.drivingtest.domain.Image;
 import org.cweili.drivingtest.domain.Question;
 import org.cweili.drivingtest.repository.ImageRespository;
 import org.cweili.drivingtest.repository.QuestionRepository;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
-
-import com.alibaba.fastjson.JSON;
 
 /**
  * 
@@ -60,7 +59,7 @@ public class QuestionService {
 		if (null == question) {
 			question = new Question("", (byte) 0, "", null, (byte) 0, "", "");
 		}
-		return JSON.toJSONString(question);
+		return new JSONObject(question).toString();
 	}
 
 	/**
@@ -77,7 +76,7 @@ public class QuestionService {
 		} else {
 			idList = getIdList(new ArrayList<String>());
 		}
-		return JSON.toJSONString(idList);
+		return JSONObject.valueToString(idList);
 	}
 
 	private List<String> getIdList(List<String> idList) {
