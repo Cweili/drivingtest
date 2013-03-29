@@ -10,7 +10,6 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bson.types.ObjectId;
 import org.cweili.drivingtest.domain.Image;
 import org.cweili.drivingtest.domain.Question;
 import org.cweili.drivingtest.repository.ImageRespository;
@@ -48,7 +47,7 @@ public class ImportData {
 			while ((line = bw.readLine()) != null) {
 				option.clear();
 				params = line.replace("\"", "").split(",");
-				id = new ObjectId().toString();
+				id = params[0];// new ObjectId().toString();
 				if ("noimg".equals(params[3])) {
 					params[3] = "";
 				} else {
