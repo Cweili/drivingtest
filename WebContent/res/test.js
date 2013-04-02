@@ -168,7 +168,7 @@ Ext.onReady(function() {
 			}
 		} else {
 			messageBox('抱歉回答错误', '正确答案是：<strong>' + question.option[question.answer] + '</strong>', 'question-image');
-			record.addWrongQuestion(question.id);
+			record.addWrongQuestion(1, question.id);
 		}
 	};
 	

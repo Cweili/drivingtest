@@ -1,4 +1,5 @@
 Ext.onReady(function() {
+	var review = 1;
 	var question = null;
 	var ids = new Array();
 	var rate = 1;
@@ -23,7 +24,11 @@ Ext.onReady(function() {
 	var buttonWidth = 150;
 	var buttonHeight = 50;
 	
-	record.getWrongQuestion(function(data){
+	if('#twice' == window.location.hash) {
+		review = 2;
+	}
+	
+	record.getWrongQuestion(review, function(data){
 		ids = Ext.decode(data);
 		maxRate = ids.length;
 		if (maxRate > 0) {
@@ -65,10 +70,14 @@ Ext.onReady(function() {
 			width: buttonWidth,
 			height: buttonHeight,
 			handler: function() {
-				record.removeWrongQuestion(question.id, function(data) {
+				record.removeWrongQuestion(review, question.id, function(data) {
 					ids = Ext.decode(data);
 					maxRate = ids.length;
-					update();
+					if (maxRate > 0) {
+						update();
+					} else {
+						messageBox('已经没有错题了哦', '已经没有错题了哦，再去练习一下吧！');
+					}
 				});
 			},
 			html: '从错题本中删除'
@@ -184,6 +193,9 @@ Ext.onReady(function() {
 			}
 		} else {
 			messageBox('抱歉回答错误', '正确答案是：<strong>' + question.option[question.answer] + '</strong>', 'question-image');
+			if (1 == review) {
+				record.addWrongQuestion(2, question.id);
+			}
 		}
 	};
 	

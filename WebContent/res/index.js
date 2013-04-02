@@ -17,21 +17,28 @@ Ext.onReady(function() {
 				text: '顺序练习',
 				textAlign: 'center',
 				handler: function() {
-					addTab('sequence', '顺序练习', 'test.html#sequence', true);
+					addTab('test-sequence', '顺序练习', 'test.html#sequence', true);
 				}
 			},
 			{
 				text: '随机练习',
 				textAlign: 'center',
 				handler: function() {
-					addTab('random', '随机练习', 'test.html#random', true);
+					addTab('test-random', '随机练习', 'test.html#random', true);
 				}
 			},
 			{
-				text: '错题复习',
+				text: '一轮复习',
 				textAlign: 'center',
 				handler: function() {
-					addTab('review', '错题复习', 'review.html', true);
+					addTab('revie-wonce', '一轮复习', 'review.html#once', true);
+				}
+			},
+			{
+				text: '二轮复习',
+				textAlign: 'center',
+				handler: function() {
+					addTab('revie-wtwice', '二轮复习', 'review.html#twice', true);
 				}
 			}
 		]

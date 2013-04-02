@@ -11,25 +11,25 @@ function Record() {
 	this.getUser = function() {
 		var cookie = Ext.util.Cookies.get(this.userCookieName);
 		if (null == cookie || '' == cookie) {
-			cookie = '' + parseInt(Math.random() * 10000000000);
+			cookie = '' + parseInt(Math.random() * 2147483647);
 			Ext.util.Cookies.set(this.userCookieName, cookie, new Date((new Date()).getTime() + 365 * 24 * 3600 * 1000));
 			return cookie;
 		}
 		return cookie;
 	};
 	
-	this.addWrongQuestion = function(id) {
-		recordService.addWrongQuestion(this.getUser(), id);
+	this.addWrongQuestion = function(review, id) {
+		recordService.addWrongQuestion(this.getUser(), review, id);
 	};
 	
-	this.getWrongQuestion = function(callback) {
-		recordService.getWrongQuestion(this.getUser(), function(data) {
+	this.getWrongQuestion = function(review, callback) {
+		recordService.getWrongQuestion(this.getUser(), review, function(data) {
 			callback(data);
 		});
 	};
 	
-	this.removeWrongQuestion = function(id, callback) {
-		recordService.removeWrongQuestion(this.getUser(), id, function(data) {
+	this.removeWrongQuestion = function(review, id, callback) {
+		recordService.removeWrongQuestion(this.getUser(), review, id, function(data) {
 			callback(data);
 		});
 	};

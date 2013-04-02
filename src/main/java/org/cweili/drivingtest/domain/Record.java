@@ -18,33 +18,43 @@ public class Record {
 
 	@Id
 	private String user;
-	private Set<String> wrongQuestion;
+	private Set<String> wrongOnce;
+	private Set<String> wrongTwice;
 
 	public Record() {
 		super();
 	}
 
 	@PersistenceConstructor
-	public Record(String user, Set<String> wrongQuestion) {
+	public Record(String user, Set<String> wrongOnce, Set<String> wrongTwice) {
 		super();
 		this.user = user;
-		this.wrongQuestion = wrongQuestion;
+		this.wrongOnce = wrongOnce;
+		this.wrongTwice = wrongTwice;
 	}
 
 	public String getUser() {
 		return user;
 	}
 
-	public Set<String> getWrongQuestion() {
-		return wrongQuestion;
+	public Set<String> getWrongOnce() {
+		return wrongOnce;
+	}
+
+	public Set<String> getWrongTwice() {
+		return wrongTwice;
 	}
 
 	public void setUser(String user) {
 		this.user = user;
 	}
 
-	public void setWrongQuestion(Set<String> wrongQuestion) {
-		this.wrongQuestion = wrongQuestion;
+	public void setWrongOnce(Set<String> wrongOnce) {
+		this.wrongOnce = wrongOnce;
+	}
+
+	public void setWrongTwice(Set<String> wrongTwice) {
+		this.wrongTwice = wrongTwice;
 	}
 
 }

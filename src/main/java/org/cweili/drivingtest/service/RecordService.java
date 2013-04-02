@@ -3,10 +3,13 @@
  */
 package org.cweili.drivingtest.service;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 import org.cweili.drivingtest.domain.Record;
 import org.cweili.drivingtest.repository.RecordRepository;
+import org.cweili.drivingtest.util.Util;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -31,9 +34,13 @@ public class RecordService {
 	 * @param user
 	 * @param id
 	 */
-	public void addWrongQuestion(String user, String id) {
+	public void addWrongQuestion(String user, int review, String id) {
 		Record record = getRecord(user);
-		record.getWrongQuestion().add(id);
+		if (2 == review) {
+			record.getWrongTwice().add(id);
+		} else {
+			record.getWrongOnce().add(id);
+		}
 		recordRepository.save(record);
 	}
 
@@ -43,8 +50,15 @@ public class RecordService {
 	 * @param user
 	 * @return
 	 */
-	public String getWrongQuestion(String user) {
-		return JSONObject.valueToString(getRecord(user).getWrongQuestion());
+	public String getWrongQuestion(String user, int review) {
+		LinkedList<String> list;
+		if (2 == review) {
+			list = new LinkedList<String>(getRecord(user).getWrongTwice());
+		} else {
+			list = new LinkedList<String>(getRecord(user).getWrongOnce());
+		}
+		Collections.shuffle(list);
+		return JSONObject.valueToString(list);
 	}
 
 	/**
@@ -54,17 +68,22 @@ public class RecordService {
 	 * @param id
 	 * @return
 	 */
-	public String removeWrongQuestion(String user, String id) {
+	public String removeWrongQuestion(String user, int review, String id) {
 		Record record = getRecord(user);
-		record.getWrongQuestion().remove(id);
+		if (2 == review) {
+			record.getWrongTwice().remove(id);
+		} else {
+			record.getWrongOnce().remove(id);
+		}
 		recordRepository.save(record);
-		return JSONObject.valueToString(record.getWrongQuestion());
+		return getWrongQuestion(user, review);
 	}
 
 	private Record getRecord(String user) {
+		user = Util.shortenInt(user);
 		Record record = recordRepository.findOne(user);
 		if (null == record) {
-			record = new Record(user, new HashSet<String>());
+			record = new Record(user, new HashSet<String>(), new HashSet<String>());
 		}
 		return record;
 	}

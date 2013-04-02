@@ -179,7 +179,7 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 		GridFSInputFile file;
 		file = gfs.createFile(image.getData());
 		file.setFilename(image.getName());
-		file.setContentType("image/jpeg");
+		file.setContentType("image/jpg");
 		file.save();
 		return image;
 	}
