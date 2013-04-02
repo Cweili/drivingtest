@@ -1,9 +1,9 @@
 body {
-    font-family:"Microsoft Yahei", tahoma, arial, sans-serif;
-    font-size:14px;
+    font-family: "Microsoft Yahei", tahoma, arial, sans-serif;
+    font-size: 14px;
 }
 a {
-    color:#15428B;
+    color: #15428B;
 }
 a:link, a:visited {
     text-decoration: none;
@@ -57,13 +57,13 @@ a:hover {
 	color: #cb5353;
 }
 .x-body {
-	font:normal 14px "Microsoft Yahei", tahoma, arial, sans-serif;
+	font: normal 14px "Microsoft Yahei", tahoma, arial, sans-serif;
 }
 .x-border-layout-ct {
 	background-color: #fff;
 }
 .x-form-display-field {
-	font:normal 18px "Microsoft Yahei", tahoma, arial, sans-serif;
+	font: normal 18px "Microsoft Yahei", tahoma, arial, sans-serif;
 }
 .x-form-display-field strong {
 	color: #ff0000;

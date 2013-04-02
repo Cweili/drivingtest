@@ -17,7 +17,7 @@ public class Util {
 		StringBuilder sb = new StringBuilder();
 		int ori = Integer.parseInt(string);
 		while (ori > 0) {
-			sb.append(CHARS.charAt(ori % CHARS.length()));
+			sb.insert(0, CHARS.charAt(ori % CHARS.length()));
 			ori /= CHARS.length();
 		}
 		return sb.toString();
@@ -27,7 +27,7 @@ public class Util {
 		StringBuilder sb = new StringBuilder();
 		int ori = integer;
 		while (ori > 0) {
-			sb.append(CHARS.charAt(ori % CHARS.length()));
+			sb.insert(0, CHARS.charAt(ori % CHARS.length()));
 			ori /= CHARS.length();
 		}
 		return sb.toString();

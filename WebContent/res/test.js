@@ -29,7 +29,8 @@ Ext.onReady(function() {
 			initComponent();
 			update();
 		} else {
-			messageBox('暂时没有题目哦', '暂时没有题目哦，请等待管理员添加吧！');
+			window.location.href = 'importdata.html' + window.location.hash;
+			//messageBox('暂时没有题目哦', '暂时没有题目哦，请等待管理员添加吧！');
 		}
 	});
 	

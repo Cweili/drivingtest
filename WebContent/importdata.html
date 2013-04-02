@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+		<title>数据导入 - 2013年驾驶员理论考试（科目一）学习资料</title>
+		<script type="text/javascript" src="dwr/engine.js"></script>
+		<script type="text/javascript" src="dwr/util.js"></script>
+		<script type="text/javascript" src="dwr/interface/importData.js"></script>
+		<script type="text/javascript">
+			importData.importData(function(data) {
+				if (data > 0) {
+					dwr.util.setValue("content", "数据导入成功，已导入 " + data + " 条数据。");
+				} else {
+					dwr.util.setValue("content", "数据导入失败，已经存在数据。");
+				}
+				setTimeout("window.location.href = 'test.html' + window.location.hash", 3000);
+			});
+		</script>
+		<style type="text/css">
+			img {
+				border: 0;
+			}
+			#content {
+				position: absolute;
+				width: 720px;
+				height: 140px;
+				top: 50%; 
+				left: 50%; 
+				margin: -120px 0 0 -360px;
+				padding-top: 80px;
+				text-align: center;
+				font: normal 38px "Microsoft Yahei", tahoma, arial, sans-serif;
+				border: 1px dashed #99bce8;
+				background: #d8e4f3;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="content"><img src="ext/resources/themes/images/default/grid/grid-loading.gif"/>正在导入数据...</div>
+	</body>
+</html>

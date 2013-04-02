@@ -39,7 +39,10 @@ public class ImportData {
 	/**
 	 * 导入数据
 	 */
-	public void importdata() {
+	public long importData() {
+		if (questionRepository.count() > 0) {
+			return 0;
+		}
 		try {
 			BufferedReader bw = new BufferedReader(new FileReader(getRoot() + "questiondb.csv"));
 			String line;
@@ -75,6 +78,7 @@ public class ImportData {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return questionRepository.count();
 	}
 
 	private String getRoot() {
