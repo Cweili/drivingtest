@@ -25,36 +25,36 @@
 			</list>		
 		</property>		
 	</bean>
-	<bean id="byteArray_hmc" class="org.springframework.http.converter.ByteArrayHttpMessageConverter" /><!-- 处理.. -->
-	<bean id="string_hmc" class="org.springframework.http.converter.StringHttpMessageConverter" /><!-- 处理.. -->
-	<bean id="resource_hmc" class="org.springframework.http.converter.ResourceHttpMessageConverter" /><!-- 处理.. -->
-	<bean id="source_hmc" class="org.springframework.http.converter.xml.SourceHttpMessageConverter" /><!-- 处理.. -->
-	<bean id="xmlAwareForm_hmc" class="org.springframework.http.converter.xml.XmlAwareFormHttpMessageConverter" /><!-- 处理.. -->
-	<bean id="jaxb2RootElement_hmc" class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" /><!-- 处理.. -->
-	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	<bean id="byteArray_hmc" class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
+	<bean id="string_hmc" class="org.springframework.http.converter.StringHttpMessageConverter"/>
+	<bean id="resource_hmc" class="org.springframework.http.converter.ResourceHttpMessageConverter"/>
+	<bean id="source_hmc" class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
+	<bean id="allEncompassingFormForm_hmc" class="org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter"/>
+	<bean id="jaxb2RootElement_hmc" class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"/>
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="messageConverters">  
 			<list>  
-				<ref bean="byteArray_hmc" />
-				<ref bean="string_hmc" />
-				<ref bean="resource_hmc" />
-				<ref bean="source_hmc" />
-				<ref bean="xmlAwareForm_hmc" />
-				<ref bean="jaxb2RootElement_hmc" />
+				<ref bean="byteArray_hmc"/>
+				<ref bean="string_hmc"/>
+				<ref bean="resource_hmc"/>
+				<ref bean="source_hmc"/>
+				<ref bean="allEncompassingFormForm_hmc"/>
+				<ref bean="jaxb2RootElement_hmc"/>
 			</list>  
 		</property>  
 	</bean>
 	
 	<!-- 总错误处理-->
 	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-		<property name="defaultErrorView">  
+		<property name="defaultErrorView">
 		 	<value>forward:/error.jsp</value>
 		</property>
 		<property name="defaultStatusCode">  
 		 	<value>200</value>
-		</property>		 	
-		<property name="warnLogCategory">  
+		</property>
+		<property name="warnLogCategory">
 		 	<value>org.springframework.web.servlet.handler.SimpleMappingExceptionResolver</value>
-		</property>		 	
+		</property>
 	</bean>
 	
 	<!-- 允许对静态资源文件的访问 --> 
