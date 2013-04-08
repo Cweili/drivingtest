@@ -25,21 +25,31 @@
 			</list>		
 		</property>		
 	</bean>
+	
+	<bean id="bufferedImage_hmc" class="org.springframework.http.converter.BufferedImageHttpMessageConverter"/>
 	<bean id="byteArray_hmc" class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
+	<bean id="form_hmc" class="org.springframework.http.converter.FormHttpMessageConverter"/>
 	<bean id="string_hmc" class="org.springframework.http.converter.StringHttpMessageConverter"/>
 	<bean id="resource_hmc" class="org.springframework.http.converter.ResourceHttpMessageConverter"/>
-	<bean id="source_hmc" class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
-	<bean id="allEncompassingFormForm_hmc" class="org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter"/>
+	
+	<bean id="jaxb2Collection_hmc" class="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter"/>
 	<bean id="jaxb2RootElement_hmc" class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"/>
+	<bean id="source_hmc" class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
+	
+	<bean id="allEncompassingForm_hmc" class="org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter"/>
+	
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="messageConverters">  
 			<list>  
+				<ref bean="bufferedImage_hmc"/>
 				<ref bean="byteArray_hmc"/>
+				<ref bean="form_hmc"/>
 				<ref bean="string_hmc"/>
 				<ref bean="resource_hmc"/>
-				<ref bean="source_hmc"/>
-				<ref bean="allEncompassingFormForm_hmc"/>
+				<ref bean="jaxb2Collection_hmc"/>
 				<ref bean="jaxb2RootElement_hmc"/>
+				<ref bean="source_hmc"/>
+				<ref bean="allEncompassingForm_hmc"/>
 			</list>  
 		</property>  
 	</bean>
