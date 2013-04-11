@@ -19,6 +19,7 @@ import org.cweili.drivingtest.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 /**
  * 
@@ -54,7 +55,8 @@ public class ImportData {
 			List<String> option = new ArrayList<String>();
 			while ((line = bw.readLine()) != null) {
 				option.clear();
-				params = line.replace("\"", "").split(",");
+				line = StringUtils.replace(line, "\"", "");
+				params = StringUtils.commaDelimitedListToStringArray(line);
 				id = Util.shortenInt(params[0]);// new ObjectId().toString();
 				if ("noimg".equals(params[3])) {
 					params[3] = "";
