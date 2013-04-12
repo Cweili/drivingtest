@@ -3,33 +3,47 @@
  */
 package org.cweili.drivingtest.util;
 
+import java.util.Arrays;
+
 /**
+ * 共用方法
  * 
  * @author Cweili
- * @version 2013-4-2 上午10:34:48
+ * @version 2013-4-12 上午10:25:59
  * 
  */
 public class Util {
 
-	private static final CharSequence CHARS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	private static final CharSequence CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
 
+	/**
+	 * 用字符串编码缩短Integer
+	 * 
+	 * @param string
+	 *            Integer字符串
+	 * @return 字符串
+	 */
 	public static String shortenInt(String string) {
-		StringBuilder sb = new StringBuilder();
-		int ori = Integer.parseInt(string);
-		while (ori > 0) {
-			sb.insert(0, CHARS.charAt(ori % CHARS.length()));
-			ori /= CHARS.length();
-		}
-		return sb.toString();
+		int integer = Integer.parseInt(string);
+		return shortenInt(integer);
 	}
 
+	/**
+	 * 用字符串编码缩短Integer
+	 * 
+	 * @param integer
+	 *            Integer
+	 * @return 字符串
+	 */
 	public static String shortenInt(int integer) {
-		StringBuilder sb = new StringBuilder();
-		int ori = integer;
-		while (ori > 0) {
-			sb.insert(0, CHARS.charAt(ori % CHARS.length()));
-			ori /= CHARS.length();
+		char[] c = new char[6];
+		int tmp = integer;
+		tmp = tmp > 0 ? tmp : -1 - tmp;
+		int i = 6;
+		while (tmp > 0 && i >= 0) {
+			c[--i] = CHARS.charAt((int) tmp & 0x3f);
+			tmp >>>= 6;
 		}
-		return sb.toString();
+		return new String(Arrays.copyOfRange(c, i, 6));
 	}
 }

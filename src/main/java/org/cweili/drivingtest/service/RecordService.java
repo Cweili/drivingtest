@@ -32,7 +32,11 @@ public class RecordService {
 	 * 添加错题
 	 * 
 	 * @param user
+	 *            用户名
+	 * @param review
+	 *            复习次数
 	 * @param id
+	 *            错题id
 	 */
 	public void addWrongQuestion(String user, int review, String id) {
 		Record record = getRecord(user);
@@ -48,7 +52,10 @@ public class RecordService {
 	 * 获取错题列表
 	 * 
 	 * @param user
-	 * @return
+	 *            用户名
+	 * @param review
+	 *            复习次数
+	 * @return JSON
 	 */
 	public String getWrongQuestion(String user, int review) {
 		LinkedList<String> list;
@@ -65,8 +72,12 @@ public class RecordService {
 	 * 删除错题
 	 * 
 	 * @param user
+	 *            用户名
+	 * @param review
+	 *            复习次数
 	 * @param id
-	 * @return
+	 *            错题id
+	 * @return JSON
 	 */
 	public String removeWrongQuestion(String user, int review, String id) {
 		Record record = getRecord(user);

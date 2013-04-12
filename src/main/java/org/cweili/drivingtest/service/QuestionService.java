@@ -38,7 +38,8 @@ public class QuestionService {
 	 * 获取图片
 	 * 
 	 * @param name
-	 * @return
+	 *            图片名
+	 * @return Base64编码的图片
 	 */
 	public String getImage(String name) {
 		Image image = imageRespository.findOne(name);
@@ -52,7 +53,8 @@ public class QuestionService {
 	 * 获取问题
 	 * 
 	 * @param id
-	 * @return
+	 *            问题id
+	 * @return JSON
 	 */
 	public String getQuestion(String id) {
 		Question question = questionRepository.findOne(id);
@@ -66,7 +68,8 @@ public class QuestionService {
 	 * 获取问题id列表
 	 * 
 	 * @param order
-	 * @return
+	 *            id顺序，随机为"#random"
+	 * @return JSON
 	 */
 	public String getQuestionIdList(String order) {
 		List<String> idList;

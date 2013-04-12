@@ -1,24 +1,16 @@
 package org.cweili.drivingtest.repository;
 
 import org.cweili.drivingtest.domain.Image;
+import org.springframework.data.repository.NoRepositoryBean;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  * 
  * @author Cweili
- * @version 2013-3-28 下午2:14:57
+ * @version 2013-4-12 上午10:35:55
  * 
  */
-public interface ImageRespository {
+@NoRepositoryBean
+public interface ImageRespository extends PagingAndSortingRepository<Image, String> {
 
-	/**
-	 * @param name
-	 * @return
-	 */
-	public Image findOne(String name);
-
-	/**
-	 * @param image
-	 * @return
-	 */
-	public <S extends Image> S save(S image);
 }

@@ -1,0 +1,5 @@
+org.cweili.drivingtest.domain
+org.cweili.drivingtest.repository
+org.cweili.drivingtest.repository.impl
+org.cweili.drivingtest.service
+org.cweili.drivingtest.util

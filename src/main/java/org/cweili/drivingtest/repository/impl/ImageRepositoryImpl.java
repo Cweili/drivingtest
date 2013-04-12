@@ -9,8 +9,10 @@ import java.io.IOException;
 import org.cweili.drivingtest.domain.Image;
 import org.cweili.drivingtest.repository.ImageRespository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.mongodb.gridfs.GridFS;
@@ -20,11 +22,11 @@ import com.mongodb.gridfs.GridFSInputFile;
 /**
  * 
  * @author Cweili
- * @version 2013-3-26 下午7:31:08
+ * @version 2013-4-12 上午10:36:06
  * 
  */
 @Repository("imageRepository")
-public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Image, String> {
+public class ImageRepositoryImpl implements ImageRespository {
 
 	@Autowired
 	MongoTemplate db;
@@ -39,7 +41,6 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 	 */
 	@Override
 	public long count() {
-		// TODO 自动生成的方法存根
 		return 0;
 	}
 
@@ -52,8 +53,6 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 	 */
 	@Override
 	public void delete(Image arg0) {
-		// TODO 自动生成的方法存根
-
 	}
 
 	/*
@@ -65,8 +64,6 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 	 */
 	@Override
 	public void delete(Iterable<? extends Image> arg0) {
-		// TODO 自动生成的方法存根
-
 	}
 
 	/*
@@ -77,8 +74,6 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 	 */
 	@Override
 	public void delete(String arg0) {
-		// TODO 自动生成的方法存根
-
 	}
 
 	/*
@@ -88,8 +83,6 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 	 */
 	@Override
 	public void deleteAll() {
-		// TODO 自动生成的方法存根
-
 	}
 
 	/*
@@ -100,7 +93,6 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 	 */
 	@Override
 	public boolean exists(String arg0) {
-		// TODO 自动生成的方法存根
 		return false;
 	}
 
@@ -111,7 +103,6 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 	 */
 	@Override
 	public Iterable<Image> findAll() {
-		// TODO 自动生成的方法存根
 		return null;
 	}
 
@@ -124,7 +115,6 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 	 */
 	@Override
 	public Iterable<Image> findAll(Iterable<String> arg0) {
-		// TODO 自动生成的方法存根
 		return null;
 	}
 
@@ -163,7 +153,6 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 	 */
 	@Override
 	public <S extends Image> Iterable<S> save(Iterable<S> arg0) {
-		// TODO 自动生成的方法存根
 		return null;
 	}
 
@@ -182,6 +171,30 @@ public class ImageRepositoryImpl implements ImageRespository, CrudRepository<Ima
 		file.setContentType("image/jpeg");
 		file.save();
 		return image;
+	}
+
+	/*
+	 * （non-Javadoc）
+	 * 
+	 * @see
+	 * org.springframework.data.repository.PagingAndSortingRepository#findAll
+	 * (org.springframework.data.domain.Sort)
+	 */
+	@Override
+	public Iterable<Image> findAll(Sort arg0) {
+		return null;
+	}
+
+	/*
+	 * （non-Javadoc）
+	 * 
+	 * @see
+	 * org.springframework.data.repository.PagingAndSortingRepository#findAll
+	 * (org.springframework.data.domain.Pageable)
+	 */
+	@Override
+	public Page<Image> findAll(Pageable arg0) {
+		return null;
 	}
 
 	private void setGfs() {
