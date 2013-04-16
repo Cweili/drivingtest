@@ -84,7 +84,7 @@ public class ImportData {
 	}
 
 	private String getRoot() {
-		return this.getClass().getResource("/").toString().substring(6);
+		return this.getClass().getResource("/").getPath().toString();
 	}
 
 	private byte[] getImage(String name) throws IOException {
