@@ -3,6 +3,8 @@
  */
 package org.cweili.drivingtest.domain;
 
+import java.io.InputStream;
+
 /**
  * 图片
  * 
@@ -13,32 +15,31 @@ package org.cweili.drivingtest.domain;
 public class Image {
 
 	String name;
+	InputStream inputStream;
 	byte[] data;
 
-	public Image() {
-		super();
+	public String getName() {
+		return name;
 	}
 
-	public Image(String name, byte[] data) {
-		super();
+	public void setName(String name) {
 		this.name = name;
-		this.data = data;
+	}
+
+	public InputStream getInputStream() {
+		return inputStream;
+	}
+
+	public void setInputStream(InputStream inputStream) {
+		this.inputStream = inputStream;
 	}
 
 	public byte[] getData() {
 		return data;
 	}
 
-	public String getName() {
-		return name;
-	}
-
 	public void setData(byte[] data) {
 		this.data = data;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 }

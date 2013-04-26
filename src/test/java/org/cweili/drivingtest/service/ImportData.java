@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,7 +62,10 @@ public class ImportData {
 				if ("noimg".equals(params[3])) {
 					params[3] = "";
 				} else {
-					imageRespository.save(new Image(id, getImage(params[3])));
+					Image image = new Image();
+					image.setName(id);
+					image.setInputStream(getImage(params[3]));
+					imageRespository.save(image);
 				}
 				option.add(params[4]);
 				option.add(params[5]);
@@ -87,13 +91,10 @@ public class ImportData {
 		return this.getClass().getResource("/").getPath().toString();
 	}
 
-	private byte[] getImage(String name) throws IOException {
+	private InputStream getImage(String name) throws IOException {
 		File file = new File(getRoot() + "image/" + name);
-		FileInputStream fis = new FileInputStream(file);
-		byte[] data = new byte[(int) file.length()];
-		fis.read(data);
-		fis.close();
-		return data;
+		InputStream iuputStream = new FileInputStream(file);
+		return iuputStream;
 	}
 
 }

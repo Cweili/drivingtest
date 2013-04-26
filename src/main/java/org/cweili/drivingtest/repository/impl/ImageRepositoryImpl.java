@@ -12,12 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.mongodb.gridfs.GridFS;
 import com.mongodb.gridfs.GridFSDBFile;
-import com.mongodb.gridfs.GridFSInputFile;
 
 /**
  * 
@@ -29,10 +29,7 @@ import com.mongodb.gridfs.GridFSInputFile;
 public class ImageRepositoryImpl implements ImageRespository {
 
 	@Autowired
-	MongoTemplate db;
-
-	private static GridFS gfs;
-	private static final String COLLECTION = "image";
+	GridFsTemplate gfs;
 
 	/*
 	 * （non-Javadoc）
@@ -127,8 +124,7 @@ public class ImageRepositoryImpl implements ImageRespository {
 	 */
 	@Override
 	public Image findOne(String name) {
-		setGfs();
-		GridFSDBFile file = gfs.findOne(name);
+		GridFSDBFile file = gfs.findOne(new Query(Criteria.where("filename").is(name)));// .findOne(name);
 		if (null == file) {
 			return null;
 		}
@@ -164,12 +160,7 @@ public class ImageRepositoryImpl implements ImageRespository {
 	 */
 	@Override
 	public <S extends Image> S save(S image) {
-		setGfs();
-		GridFSInputFile file;
-		file = gfs.createFile(image.getData());
-		file.setFilename(image.getName());
-		file.setContentType("image/jpeg");
-		file.save();
+		gfs.store(image.getInputStream(), image.getName(), "image/jpeg");
 		return image;
 	}
 
@@ -195,11 +186,5 @@ public class ImageRepositoryImpl implements ImageRespository {
 	@Override
 	public Page<Image> findAll(Pageable arg0) {
 		return null;
-	}
-
-	private void setGfs() {
-		if (null == gfs) {
-			gfs = new GridFS(db.getDb(), COLLECTION);
-		}
 	}
 }
