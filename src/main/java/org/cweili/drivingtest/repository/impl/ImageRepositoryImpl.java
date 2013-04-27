@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.gridfs.GridFsCriteria;
 import org.springframework.data.mongodb.gridfs.GridFsOperations;
 import org.springframework.stereotype.Repository;
 
@@ -124,7 +124,7 @@ public class ImageRepositoryImpl implements ImageRespository {
 	 */
 	@Override
 	public Image findOne(String name) {
-		GridFSDBFile file = gfs.findOne(new Query(Criteria.where("filename").is(name)));// .findOne(name);
+		GridFSDBFile file = gfs.findOne(new Query(GridFsCriteria.whereFilename().is(name)));
 		if (null == file) {
 			return null;
 		}
