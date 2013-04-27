@@ -14,7 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.gridfs.GridFsTemplate;
+import org.springframework.data.mongodb.gridfs.GridFsOperations;
 import org.springframework.stereotype.Repository;
 
 import com.mongodb.gridfs.GridFSDBFile;
@@ -29,7 +29,7 @@ import com.mongodb.gridfs.GridFSDBFile;
 public class ImageRepositoryImpl implements ImageRespository {
 
 	@Autowired
-	GridFsTemplate gfs;
+	GridFsOperations gfs;
 
 	/*
 	 * （non-Javadoc）
