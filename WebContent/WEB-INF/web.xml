@@ -3,8 +3,8 @@
 	<display-name>Driving Test</display-name>
 	
 	<context-param>
-	<param-name>contextConfigLocation</param-name>
-	<param-value>classpath:*.xml</param-value>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:*.xml</param-value>
 	</context-param>
 	
 	<listener>
