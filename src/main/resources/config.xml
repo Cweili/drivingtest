@@ -62,19 +62,6 @@
 		</property>
 	</bean>
 	
-	<!-- 拦截器 -->
-	<mvc:interceptors>
-		<!-- This will intercept all URIs -->
-		<ref bean="initInterceptor"/>
-		<ref bean="pageProcessingInterceptor"/>
-		<!-- This will apply interceptor to only certain URIs -->
-		<mvc:interceptor>
-		     <mvc:mapping path="/admin-*"/>
-		     <mvc:exclude-mapping path="/admin-login"/>
-		     <ref bean="authenticationInterceptor"/>
-		</mvc:interceptor>
-	</mvc:interceptors>
-	
 	<!-- 允许对静态资源文件的访问 --> 
 	<mvc:default-servlet-handler/>
 	
