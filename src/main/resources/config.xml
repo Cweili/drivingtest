@@ -10,6 +10,6 @@
 	default-lazy-init="true">
 	
 	<!-- 自动扫描包，可以写多个 -->
-	<context:component-scan base-package="org.cweili.*.*,org.cweili.*.*.*"></context:component-scan>
+	<context:component-scan base-package="org.cweili.*.*,org.cweili.*.*.*"/>
 	
 </beans>
