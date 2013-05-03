@@ -19,12 +19,7 @@
 	<context:component-scan base-package="org.cweili.*.*,org.cweili.*.*.*"></context:component-scan>
 	
 	<!-- 注解请求映射  -->
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">		
-		<property name="interceptors">
-			<list>
-			</list>		
-		</property>		
-	</bean>
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>		
 	
 	<bean id="bufferedImage_hmc" class="org.springframework.http.converter.BufferedImageHttpMessageConverter"/>
 	<bean id="byteArray_hmc" class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
@@ -54,7 +49,7 @@
 		</property>  
 	</bean>
 	
-	<!-- 总错误处理-->
+	<!-- 总错误处理 -->
 	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="defaultErrorView">
 		 	<value>forward:/error.jsp</value>
@@ -66,6 +61,19 @@
 		 	<value>org.springframework.web.servlet.handler.SimpleMappingExceptionResolver</value>
 		</property>
 	</bean>
+	
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<!-- This will intercept all URIs -->
+		<ref bean="initInterceptor"/>
+		<ref bean="pageProcessingInterceptor"/>
+		<!-- This will apply interceptor to only certain URIs -->
+		<mvc:interceptor>
+		     <mvc:mapping path="/admin-*"/>
+		     <mvc:exclude-mapping path="/admin-login"/>
+		     <ref bean="authenticationInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
 	
 	<!-- 允许对静态资源文件的访问 --> 
 	<mvc:default-servlet-handler/>
