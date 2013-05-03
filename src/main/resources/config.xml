@@ -2,70 +2,14 @@
 <beans
 	xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"  
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans.xsd 
 	http://www.springframework.org/schema/context
-	http://www.springframework.org/schema/context/spring-context.xsd
-	http://www.springframework.org/schema/mvc
-	http://www.springframework.org/schema/mvc/spring-mvc.xsd
-	http://www.springframework.org/schema/tx 
-	http://www.springframework.org/schema/tx/spring-tx.xsd"
+	http://www.springframework.org/schema/context/spring-context.xsd"
 	default-lazy-init="true">
 	
 	<!-- 自动扫描包，可以写多个 -->
 	<context:component-scan base-package="org.cweili.*.*,org.cweili.*.*.*"></context:component-scan>
-	
-	<!-- 注解请求映射  -->
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>		
-	
-	<bean id="bufferedImage_hmc" class="org.springframework.http.converter.BufferedImageHttpMessageConverter"/>
-	<bean id="byteArray_hmc" class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
-	<bean id="form_hmc" class="org.springframework.http.converter.FormHttpMessageConverter"/>
-	<bean id="string_hmc" class="org.springframework.http.converter.StringHttpMessageConverter"/>
-	<bean id="resource_hmc" class="org.springframework.http.converter.ResourceHttpMessageConverter"/>
-	
-	<bean id="jaxb2Collection_hmc" class="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter"/>
-	<bean id="jaxb2RootElement_hmc" class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"/>
-	<bean id="source_hmc" class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
-	
-	<bean id="allEncompassingForm_hmc" class="org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter"/>
-	
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-		<property name="messageConverters">  
-			<list>  
-				<ref bean="bufferedImage_hmc"/>
-				<ref bean="byteArray_hmc"/>
-				<ref bean="form_hmc"/>
-				<ref bean="string_hmc"/>
-				<ref bean="resource_hmc"/>
-				<ref bean="jaxb2Collection_hmc"/>
-				<ref bean="jaxb2RootElement_hmc"/>
-				<ref bean="source_hmc"/>
-				<ref bean="allEncompassingForm_hmc"/>
-			</list>  
-		</property>  
-	</bean>
-	
-	<!-- 总错误处理 -->
-	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-		<property name="defaultErrorView">
-		 	<value>forward:/error.jsp</value>
-		</property>
-		<property name="defaultStatusCode">  
-		 	<value>200</value>
-		</property>
-		<property name="warnLogCategory">
-		 	<value>org.springframework.web.servlet.handler.SimpleMappingExceptionResolver</value>
-		</property>
-	</bean>
-	
-	<!-- 允许对静态资源文件的访问 --> 
-	<mvc:default-servlet-handler/>
-	
-	<!-- 用注解来实现事务管理 -->
-	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 	
 </beans>
