@@ -1,6 +1,3 @@
-/**
- * 
- */
 package org.cweili.drivingtest.domain;
 
 import java.io.InputStream;

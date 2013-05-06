@@ -18,6 +18,8 @@
 		<dwr:create javascript="importData" type="spring">
 			<dwr:param name="beanName" value="importData" />
 		</dwr:create>
+		<dwr:convert type="collection" class="java.util.Collection" />
+		<dwr:convert type="bean" class="java.lang.Object" />
 	</dwr:configuration>
 
 </beans>

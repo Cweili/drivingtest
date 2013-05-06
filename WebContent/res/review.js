@@ -29,7 +29,7 @@ Ext.onReady(function() {
 	}
 	
 	record.getWrongQuestion(review, function(data){
-		ids = Ext.decode(data);
+		ids = data;
 		maxRate = ids.length;
 		if (maxRate > 0) {
 			initComponent();
@@ -206,7 +206,7 @@ Ext.onReady(function() {
 		rate = rate < maxRate ? rate : maxRate;
 		
 		questionService.getQuestion(ids[rate - 1], function(data) {
-			question = Ext.decode(data);
+			question = data;
 			if (0 == question.type || 2 == question.type) {
 				question.content = '选择题：' + question.content;
 			} else {

@@ -1,21 +1,19 @@
-/**
- * 
- */
 package org.cweili.drivingtest.service;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.cweili.drivingtest.domain.Record;
 import org.cweili.drivingtest.repository.RecordRepository;
 import org.cweili.drivingtest.util.Util;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 /**
+ * 记录 Service
  * 
  * @author Cweili
  * @version 2013-3-28 下午12:14:27
@@ -55,17 +53,17 @@ public class RecordService {
 	 *            用户名
 	 * @param review
 	 *            复习次数
-	 * @return JSON
+	 * @return 错题列表
 	 */
-	public String getWrongQuestion(String user, int review) {
-		LinkedList<String> list;
+	public List<String> getWrongQuestion(String user, int review) {
+		List<String> list;
 		if (2 == review) {
 			list = new LinkedList<String>(getRecord(user).getWrongTwice());
 		} else {
 			list = new LinkedList<String>(getRecord(user).getWrongOnce());
 		}
 		Collections.shuffle(list);
-		return JSONObject.valueToString(list);
+		return list;
 	}
 
 	/**
@@ -77,9 +75,9 @@ public class RecordService {
 	 *            复习次数
 	 * @param id
 	 *            错题id
-	 * @return JSON
+	 * @return 错题列表
 	 */
-	public String removeWrongQuestion(String user, int review, String id) {
+	public List<String> removeWrongQuestion(String user, int review, String id) {
 		Record record = getRecord(user);
 		if (2 == review) {
 			record.getWrongTwice().remove(id);

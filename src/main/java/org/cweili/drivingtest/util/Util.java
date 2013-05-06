@@ -1,6 +1,3 @@
-/**
- * 
- */
 package org.cweili.drivingtest.util;
 
 import java.util.Arrays;
@@ -14,7 +11,7 @@ import java.util.Arrays;
  */
 public class Util {
 
-	private static final CharSequence CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+	private static final CharSequence CHARS = "-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz";
 
 	/**
 	 * 用字符串编码缩短Integer

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package org.cweili.drivingtest.repository.impl;
 
 import java.io.ByteArrayOutputStream;
