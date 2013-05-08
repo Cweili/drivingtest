@@ -18,7 +18,6 @@
 		<dwr:create javascript="importData" type="spring">
 			<dwr:param name="beanName" value="importData" />
 		</dwr:create>
-		<dwr:convert type="collection" class="java.util.Collection" />
 		<dwr:convert type="bean" class="org.cweili.drivingtest.domain.Question" />
 	</dwr:configuration>
 
